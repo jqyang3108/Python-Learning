@@ -212,7 +212,7 @@ def convertToInteger(bList):
 
 
 if __name__ == "__main__":
-    pattern = "1XX7"
+    pattern = "314X9X"
     bList=[True,False,False, False, False, True, True, True]
     bList2 =[False, False,True,False,False,True]
     bList3 =[True, 1,0,22]

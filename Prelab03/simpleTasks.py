@@ -23,7 +23,7 @@ def find(pattern):
                 if((testString[j] == pattern[j]) or (pattern[j] == "X")):  #+1 if each digit matches
                     c += 1
             if(c == lenP):                                              #c = length of pattern means every digit matches
-                output.append(int(testString))
+                output.append(testString)
         else:
             break
     return output
@@ -44,7 +44,7 @@ def getStreakProduct(sequence, maxSize, product):
             for k in testString:
                 testProduct = testProduct * int(k)
             if(testProduct == product):
-                output.append(int(testString))
+                output.append(testString)
                 break
             j+=1
         i+=1
@@ -212,7 +212,7 @@ def convertToInteger(boolList):
 
 
 if __name__ == "__main__":
-    pattern = "154"
+    pattern = "1XX7"
     sequence = "1547896154321687984"
     sequence2 = "14822"
     sequence4 ="AAASSSSSSAPPPSSPPBBCCCSSS"
