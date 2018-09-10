@@ -1,0 +1,11 @@
+#! /bin/bash
+input=$@
+for (( I=$1; I >= 0; I-- ))
+do
+    ((a=$I%3))
+    if (( a == 0 ))
+    then
+        echo ${I}
+    fi
+done
+exit 0
