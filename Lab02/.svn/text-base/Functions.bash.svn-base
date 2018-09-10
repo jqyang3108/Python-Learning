@@ -1,0 +1,25 @@
+#! /bin/bash
+
+#----------------------------------
+# $Author$
+# $Date$
+#----------------------------------
+
+function part_1 
+{               
+    # Fill out your answer here
+    sort -t ',' -k4,4 -k6,6 -k1,1 -k2,2 people.csv | tail -n5
+
+    return                      
+}                               
+
+function part_2
+{              
+    # Fill out your answer here
+    return                     
+}                              
+
+
+# To test your function, you can call it below like this:
+#
+ part_1

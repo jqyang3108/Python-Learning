@@ -1,0 +1,27 @@
+#! /bin/bash
+
+#---------------------------------------
+# $Author$
+# $Date$
+#---------------------------------------
+
+# Do not modify above this line
+path=c-files
+
+for file in $path/*.c
+do
+	file=$( echo $file | cut -d '/' -f2 )
+	filename=$( echo $file | cut -d '.' -f1 )
+	#echo "$filename"
+	#file=$( cut -d '/' f2 <<< $file )
+	gcc -Wall -Werror -std=c99 $path/$file  2> /dev/null
+       	if (( $? == 0 ))
+     	then	
+    	    echo "Compiling file for: $file... Compilation succeeded"
+	(./$path/$filename.o | tee $filename.out) > /dev/null
+	else	
+            echo "Compiling file for: $file... Compilation failed"
+        fi
+  	
+done
+exit 0
