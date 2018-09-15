@@ -88,7 +88,7 @@ def readCircuit(fileName):
 
 #_________________________problem1________________________________
 
-def getComponentCountByProject(projectID):
+def get_component_count_by_project(projectID):
     project = projectDict()[0]
     if(projectID not in project):
         return None
@@ -124,7 +124,7 @@ def getComponentCountByProject(projectID):
     return T
 
 #_________________________problem2________________________________
-def getComponentCountByStudent(studentName):
+def get_component_count_by_student(studentName):
     students = studentsDict()[0]
 
     if(studentName not in students):
@@ -170,7 +170,7 @@ def getComponentCountByStudent(studentName):
         return T
 
 #_________________________problem3________________________________
-def getParticipationByStudent(studentName):
+def get_participation_by_student(studentName):
     students = studentsDict()[0]
     if(studentName not in students.keys()):
         return None
@@ -193,7 +193,7 @@ def getParticipationByStudent(studentName):
         return par
 
 #_________________________problem4________________________________
-def getParticipationByProject(projectID):
+def get_participation_by_project(projectID):
     project = projectDict()[0]
     if(projectID not in project):
         return None
@@ -219,7 +219,7 @@ def getParticipationByProject(projectID):
 
 
 #_________________________problem5________________________________
-def getProjectByComponent(components):
+def get_project_by_component(components):
     circuitList = projectDict()[1]
     projList = projectDict()[2]
     project = projectDict()[3]
@@ -255,7 +255,7 @@ def getProjectByComponent(components):
 
     return A
 #_________________________problem6________________________________
-def getStudentByComponent(components):
+def get_student_by_component(components):
     circuitList = projectDict()[1]
     students = studentsDict()[3]
     i= 0
@@ -287,7 +287,7 @@ def getStudentByComponent(components):
 
     return A
 #_________________________problem7________________________________
-def getComponentByStudent(studentNames):
+def get_component_by_student(studentNames):
     circuitList = projectDict()[1]
     students = studentsDict()[0]
     studentNames = list(studentNames)
@@ -319,7 +319,7 @@ def getComponentByStudent(studentNames):
     return A
 #_________________________problem8________________________________
 
-def getCommonByProject(projectID1, projectID2):
+def get_common_by_project(projectID1, projectID2):
     project = projectDict()[0]
 
     if ((projectID1 not in project) or (projectID2 not in project)):
@@ -362,7 +362,7 @@ def getCommonByProject(projectID1, projectID2):
         return
     return output
 #_________________________problem9________________________________
-def getCommonByStudent(studentName1, studentName2):
+def get_common_by_student(studentName1, studentName2):
     students = studentsDict()[0]
 
     if((studentName1 not in students) or (studentName2 not in students)):
@@ -401,7 +401,7 @@ def getCommonByStudent(studentName1, studentName2):
 
     return output
 #_________________________problem10________________________________
-def getProjectByCircuit():
+def get_project_by_circuit():
     circuitList = projectDict()[1]
     project = projectDict()[3]
     i=0
@@ -417,7 +417,7 @@ def getProjectByCircuit():
         i+=1
     return output
 #_________________________problem11________________________________
-def getCircuitByStudent():
+def get_circuit_by_student():
 
     students = studentsDict()[3]
     circuitList = projectDict()[1]
@@ -446,7 +446,7 @@ def getCircuitByStudent():
 
     return output
 #_________________________problem12________________________________
-def getCircuitByStudentPartial(studentName):
+def get_circuit_by_student_partial(studentName):
 
     output = []
     nameList = studentsDict()[1]
@@ -462,7 +462,7 @@ def getCircuitByStudentPartial(studentName):
     if(studentName not in fn and studentName not in ln):
         return
     else:
-        nameDic = getCircuitByStudent()
+        nameDic = get_circuit_by_student()
         output={}
         i=0
         while(i<len(nameList)):
@@ -481,19 +481,24 @@ if __name__ == "__main__":
     #result = projectDict()
     #result = readCircuit("54609")
     #result = studentsDict()
+    filePath = 'testout.txt'
 
-    print("#1:",getComponentCountByProject("082D6241-40EE-432E-A635-65EA8AA374B6")) #1
-    print("#2:",getComponentCountByStudent("Sanders, Emily")  )                      #2
-    print("#3:",getParticipationByStudent("Sanders, Emily")    )                       #3
-    print("#4:",getParticipationByProject("90BE0D09-1438-414A-A38B-8309A49C02EF")   )    #4
-    print("#5:", getProjectByComponent({"T71.386", "C407.660","L760.824"}) )  #5
+    open(filePath, "w").close()
 
-    print("#6:",getStudentByComponent({"T71.386", "C407.660","L760.824"}) ) #6
-    print("#7:",getComponentByStudent({"Morgan, Edward", "White, Diana", "Sanders, Emily", "Wright, Eric"}) ) #7
-    print("#8:",getCommonByProject("90BE0D09-1438-414A-A38B-8309A49C02EF", "082D6241-40EE-432E-A635-65EA8AA374B6") )#8
-    print("#9:",getCommonByStudent("Allen, Amanda","Adams, Keith"))  #9
-    print("#10:",getProjectByCircuit() )  #10
+    with open(filePath, "a") as myfile:
+        myfile.write("#1: "+str(get_component_count_by_project("082D6241-40EE-432E-A635-65EA8AA374B6"))+"\n")
+    with open(filePath, "a") as myfile:
+        myfile.write("#2: "+str(get_component_count_by_student("Sanders, Emily")  )  )                    #2
+    print("#3:",get_participation_by_student("Sanders, Emily")    )                       #3
+    print("#4:",get_participation_by_project("90BE0D09-1438-414A-A38B-8309A49C02EF")   )    #4
+    print("#5:", get_project_by_component({"T71.386", "C407.660","L760.824"}) )  #5
 
-    print("#11:",getCircuitByStudent())#11
-    print("#12:",getCircuitByStudentPartial("Rogers") )#12
+    print("#6:",get_student_by_component({"T71.386", "C407.660","L760.824"}) ) #6
+    print("#7:",get_component_by_student({"Morgan, Edward", "White, Diana", "Sanders, Emily", "Wright, Eric"}) ) #7
+    print("#8:",get_common_by_project("90BE0D09-1438-414A-A38B-8309A49C02EF", "082D6241-40EE-432E-A635-65EA8AA374B6") )#8
+    print("#9:",get_common_by_student("Allen, Amanda","Adams, Keith"))  #9
+    print("#10:",get_project_by_circuit() )  #10
+
+    print("#11:",get_circuit_by_student())#11
+    print("#12:",get_circuit_by_student_partial("Rogers") )#12
    # print(result)
