@@ -1,0 +1,60 @@
+def get_ngrams(words,n):
+    b=[]
+    for index,word in enumerate(words):
+        b.append(word)
+        if index >= n-1:
+            count =n
+            index2 = index-(n-1)
+            c=[]
+            while count !=0:
+                c.append(b[index2])
+                index2 += 1
+                count -= 1
+            yield tuple(c)
+def get_distinct_ngrams(words,n):
+    b=[]
+    d=[]
+    for index,word in enumerate(words):
+        b.append(word)
+        if index >= n-1:
+            count =n
+            index2 = index-(n-1)
+            c=[]
+            while count !=0:
+                c.append(b[index2])
+                index2 += 1
+                count -= 1
+            if c not in d:
+                d.append(c)
+                yield tuple(c)
+def get_distinct_unordered_ngrams(words,n):
+    b=[]
+    d=[]
+    for index,word in enumerate(words):
+        b.append(word)
+        if index >= n-1:
+            count =n
+            index2 = index-(n-1)
+            c=[]
+            while count !=0:
+                c.append(b[index2])
+                index2 += 1
+                count -= 1
+            if set(c) not in d:
+                d.append(set(c))
+                yield tuple(c)
+def get_ith_ngram(words,n,i):
+    b=[]
+    d=[]
+    for index,word in enumerate(words):
+        b.append(word)
+        if index >= n-1:
+            count =n
+            index2 = index-(n-1)
+            c=[]
+            while count !=0:
+                c.append(b[index2])
+                index2 += 1
+                count -= 1
+            d.append(tuple(c))
+    return d[i]
