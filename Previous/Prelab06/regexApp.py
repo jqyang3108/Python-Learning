@@ -1,0 +1,243 @@
+import re
+from uuid import UUID
+def getUrlParts(url):
+    match = re.search(r"([\w.-]+)/([\w.-]+)/([\w.-]+)",url)
+    output = (match.group(1),match.group(2),match.group(3))
+    return output
+
+def getQueryParameters(url):
+    output = []
+    match = re.search(r"([\w.\-]+)=([\w.\-]+)&([\w.\-]+)=([\w.\-]+)&([\w.\-]+)=([\w.\-]+)",url)
+    i = 1
+    while i<=6:
+        t = (match.group(i),match.group(i+1))
+        output.append(t)
+        i+=2
+    return output
+
+def getSpecial(sentence, letter):
+    output = re.findall(r"\b({0}[\w]*[^{0}\W]|[^{0}\W][\w]*{0})\b".format(letter),sentence,re.I)  #----t or t----
+    return output
+
+def getRealMAC(sentence):
+    get = re.search(r"([\w]{2}(:|-))([\w]{2}(:|-))([\w]{2}(:|-))([\w]{2}(:|-))([\w]{2}(:|-))[\w]{2}",sentence, re.I) # 5(xx).with one (xx) at the end
+    if get:
+        return get.group()
+    else:
+        return None
+
+def buildDict():
+    with open("Employees.txt",'r') as myFile:
+        read = myFile.readlines()
+    readList = []
+    for line in read:
+        readList.append(line)
+    i=0
+    #read namelist
+    name=[]
+    while(i<len(read)):
+        nameMatch = re.search(r"([\w]*)([,\s]*)([\w]*)",read[i])
+        a = nameMatch.group()
+        if(nameMatch.group(2) == ", "):
+            a = nameMatch.group(3)+ " " +nameMatch.group(1)
+        name.append(a)
+        i+=1
+
+    #read id list---------------------------------------------------
+    i = 0
+    j=0
+    id = []
+    state = []
+    phone = []
+    while(i<len(read)):
+        idMatch = re.search(r"([\w]{8})(\s|-|)([\w]{4})(\s|-|)([\w]{4})(\s|-|)([\w]{4})(\s|-|)[\w]{12}",read[i], re.I)
+        stateMatch = re.search(r"(([a-zA-Z]+\s[a-zA-Z]+)|([a-zA-Z]+))$",read[i], re.I)
+        if(idMatch):
+
+            a = idMatch.group()
+            a = str(UUID(a))
+            id.append(a)
+        else:
+            id.append(" ")
+
+        if(stateMatch):
+            a = stateMatch.group()
+            state.append(a)
+        else:
+            state.append(" ")
+        phoneMatch1 = re.search(r"\((?P<one>\d{3})\)\s(?P<two>\d{3})-(?P<three>\d{4})",read[i], re.I)
+        phoneMatch2 = re.search(r"(?P<one>\d{3})-(?P<two>\d{3})-(?P<three>\d{4})",read[i], re.I)
+        phoneMatch3 = re.search(r"\d{10}",read[i])
+        if(phoneMatch1):
+            a = phoneMatch1.group()
+            phone.append(a)
+        elif(phoneMatch2):
+            a = ("("+phoneMatch2.group("one")+ ")" + " " +phoneMatch2.group("two")+"-"+phoneMatch2.group("three"))
+            phone.append(a)
+        elif(phoneMatch3):
+            a = phoneMatch3.group()
+            allset = re.search(r"([\d]{3})([\d]{3})([\d]{4})", a)
+            ff  =allset.group(1)
+            mm = allset.group(2)
+            bb = allset.group(3)
+            a = ("("+ff+ ")" + " " +mm+"-"+bb)
+            phone.append(a)
+        else:
+            phone.append(" ")
+
+        i+=1
+
+    dictID = {}
+    i = 0
+    while i<len(read):
+        dictID.setdefault(name[i],[]).append(id[i])
+        i+=1
+
+    dictPhone = {}
+    i = 0
+    while i<len(read):
+        dictPhone.setdefault(name[i],[]).append(phone[i])
+        i+=1
+    i=0
+    dictState = {}
+    while i<len(read):
+        dictState.setdefault(name[i],[]).append(state[i])
+        i+=1
+    output = []
+    list =[name,id,phone,state]
+
+    output.append(list)
+    output.append(dictID)
+    output.append(dictPhone)
+    output.append(dictState)
+    return output
+
+
+def getRejectedEntries():
+    nameList = buildDict()[0][0]
+    idList = buildDict()[0][1]
+    phoneList = buildDict()[0][2]
+    stateList = buildDict()[0][3]
+    i = 0
+    list =[]
+    while(i<len(nameList)):
+        if((idList[i] == " ")and(phoneList[i] == " ")and(stateList[i] == " ")):
+            list.append(nameList[i])
+        i+=1
+    list.sort()
+    return list
+
+
+def getEmployeesWithIDs():
+    output = {}
+    nameList = buildDict()[0][0]
+    idDict = buildDict()[1]
+
+    i = 0
+    j=0
+    while (i<len(idDict)):
+        if(idDict.get(nameList[i])[0] != ' '):
+            output[nameList[i]] = idDict.get(nameList[i])[0]
+            j+=1
+        i+=1
+    return output
+
+def getEmployeesWithoutIDs():
+    output = []
+    nameList = buildDict()[0][0]
+    rejected = getRejectedEntries()
+    withID = getEmployeesWithIDs()
+
+    for id in nameList:
+        if((id not in rejected) and (id not in withID)):
+            output.append(id)
+    output.sort()
+    return output
+
+def getEmployeesWithPhones():
+    output = {}
+    nameList = buildDict()[0][0]
+    phoneDict = buildDict()[2]
+    i = 0
+    while (i<len(phoneDict)):
+        if(phoneDict.get(nameList[i])[0] != ' '):
+            output[nameList[i]] = phoneDict.get(nameList[i])[0]
+        i+=1
+
+    return output
+
+def getEmployeesWithStates():
+    output = {}
+    nameList = buildDict()[0][0]
+    stateDict = buildDict()[3]
+    i = 0
+    while (i<len(stateDict)):
+        if(stateDict.get(nameList[i])[0] != ' '):
+            output[nameList[i]] = stateDict.get(nameList[i])[0]
+        i+=1
+    return output
+
+def getCompleteEntries():
+    output = {}
+    list = []
+    nameList = buildDict()[0][0]
+    idDict = buildDict()[1]
+    phoneDict = buildDict()[2]
+    stateDict = buildDict()[3]
+
+    i = 0
+    value = tuple()
+    for name in nameList:
+        if((idDict.get(name)[0] != " ") and (phoneDict.get(name)[0] != " ") and (stateDict.get(name)[0] != " ")):
+            value = (idDict.get(name)[0],phoneDict.get(name)[0],stateDict.get(name)[0])
+            output[name] = value
+    return output
+
+def testAll():
+    rejected = getRejectedEntries()
+    print("rejected",len(rejected),rejected)
+    withID = getEmployeesWithIDs()
+    print("with id",len(withID),withID)
+    withoutID = getEmployeesWithoutIDs()
+    print("without id",len(withoutID),withoutID)
+    phone = getEmployeesWithPhones()
+    print("phone",len(phone),phone)
+    state = getEmployeesWithStates()
+    print("state",len(state),state)
+    comp = getCompleteEntries()
+    print("comp ",len(comp),comp)
+
+    return
+
+if __name__ == "__main__":
+    url1 = "http://www.purdue.edu/Home/Calendar?Year=2016&2016&Month=September&Semester=Fall"  #1
+    #result = getUrlParts(url1)
+
+    url2 = "http://www.google.com/Math/Const?Pi=3.14&Max_Int=65536&What_Else=Not-Here"          #2
+    #result = getQueryParameters(url2)
+
+    s = "The TART program runs on Tuesdays and Thursdays, but it does not start until next week"   #3
+    result = getSpecial(s,"t")
+
+    s2 = "Jeanne Ryan,, , ,,a1567a8afc25416baf16c2ff08daa2e8, 23b38b75-aafa-4eed-a3bb-880d4fe6e4d5} ;,; ,(205) 181-6244;,; ;,; ,,       58-1C-0A-6E-39-4Dsadasd ssv58:1C:0A:6E:39"       #4
+    #result = getRealMAC(s2)
+
+
+    #result = buildDict()
+
+    #result = getRejectedEntries()
+
+
+    #result = getEmployeesWithIDs()                                                                   #5
+    #result = getEmployeesWithoutIDs()
+
+    #result = getEmployeesWithPhones()
+
+
+    #result = getEmployeesWithStates()
+
+    #result = getCompleteEntries()
+
+    #result = testAll()
+    print(result)
+

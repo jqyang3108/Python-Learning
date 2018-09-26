@@ -1,0 +1,24 @@
+#! /bin/bash
+
+#---------------------------------------
+# $Author$
+# $Date$
+#---------------------------------------
+
+# Do not modify above this line.
+
+input=$1
+
+argucheck=$#
+
+if (( ! $argucheck == 1 ))
+then
+    echo "Usage: check_permissions.bash <inpput file/directory>"
+
+else
+
+
+    echo " is "
+fi
+
+

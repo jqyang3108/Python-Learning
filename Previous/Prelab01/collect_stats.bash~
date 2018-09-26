@@ -1,0 +1,44 @@
+#! /bin/bash
+
+#---------------------------------------
+# $Jiaqi Yang$
+# $01-011-2018$
+#---------------------------------------
+
+# Do not modify above this line.
+
+file=$1
+sport=$2
+Num_Of_Argu=$#
+
+echo "Num of arguments is $Num_Of_Argu."
+
+if (( $Num_Of_Argu != 2 ))
+then
+    echo "Not enough arguments!"
+    exit 1
+fi
+
+
+if [ ! -e $file ]
+then
+    echo "$file does not exit"
+    exit 2
+fi
+
+#read $file
+
+while read file
+do
+    echo ($cut -d ',' -f 1 )
+done < $1
+
+#cut -d -f ',' 1 $file
+
+
+
+echo "good"
+
+#(($file == $sport))
+#echo $?
+

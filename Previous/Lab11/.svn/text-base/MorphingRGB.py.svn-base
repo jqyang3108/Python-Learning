@@ -1,0 +1,104 @@
+import numpy as np
+from scipy import spatial,interpolate
+import imageio
+from PIL import Image, ImageDraw
+
+
+
+class Affine:
+    def __init__(self, source, destination):
+        if(source.dtype is not np.dtype('float64')):
+            raise TypeError('source type incorrect')
+        if(destination.dtype is not np.dtype('float64')):
+            raise TypeError('destination type incorrect')
+        if(source.shape != (3,2)):
+            raise ValueError('Source is not (3,2)')
+        if(destination.shape != (3,2)):
+            raise ValueError('desitnation is not (3,2)')
+
+        self.source = source
+        self.destination = destination
+        h = np.linalg.solve(np.array([[source[0][0], source[0][1],1,0,0,0], [0,0,0,source[0][0],source[0][1],1],[source[1][0],source[1][1],1,0,0,0],[0,0,0,source[1][0],source[1][1],1],[source[2][0],source[2][1],1,0,0,0],[0,0,0,source[2][0],source[2][1],1]]),np.array([destination[0][0],destination[0][1],destination[1][0],destination[1][1],destination[2][0],destination[2][1]]))
+        self.matrix = np.array([[h[0],h[1],h[2]],[h[3],h[4],h[5]],[0,0,1]])
+
+    def transform(self,sourceImage, destinationImage):
+        if(type(sourceImage) is not np.ndarray):
+            raise TypeError('transform: sourceImage type incorrect')
+        if(type(destinationImage) is not np.ndarray):
+            raise TypeError('transform: destinationImage type incorrect')
+
+        output = Image.new('L',(800,600),0)
+        vert = [tuple(a) for a in self.destination]
+        ImageDraw.Draw(output).polygon(vert, outline=255, fill=255)
+        mask = np.array(output)
+        inv_h = np.linalg.inv(self.matrix)
+        addin = interpolate.RectBivariateSpline(range(sourceImage.shape[0]),range(sourceImage.shape[1]),sourceImage,kx=1,ky=1)
+
+        a, b = np.where(mask == 255)
+        m = np.ones(shape=(3,len(a)),dtype=np.float64)
+        m[1],m[0] = a,b
+        first = np.matmul(inv_h, m)
+        new_p = np.round(addin.ev(first[1],first[0]).astype(np.uint8))
+        i = [j for j in range(len(a))]
+        destinationImage[a,b] = new_p[i]
+
+class BLender:
+    def __init__(self, startImage, startPoints, endImage, endPoints):
+        if(type(startImage) is not np.ndarray):
+            raise TypeError("1.startImage incorrect")
+        if(type(startPoints) is not np.ndarray):
+            raise TypeError("2.startPoints incorrect")
+        if(type(endImage) is not np.ndarray):
+            raise TypeError("3.endImage incorrect")
+        if(type(endPoints) is not np.ndarray):
+            raise TypeError("4.endPoints incorrect")
+
+        self.startImage = startImage
+        self.startPoints = startPoints
+        self.endImage = endImage
+        self.endPoints = endPoints
+
+
+    def getBlendedImage(self,alpha):
+        if(not(alpha >= 0 and alpha <= 1)):
+            raise ValueError("0 <= alpha <= 1")
+
+        source = spatial.Delaunay(self.startPoints)
+        startTriArray = self.startPoints[source.simplices]
+        endTriArray = self.endPoints[source.simplices]
+        newImg1 = np.array(Image.new('L',(800,600), 0))
+        newImg2 = np.array(Image.new('L',(800,600), 0))
+
+        i = 0
+        while i<(len(startTriArray)):
+            triangle3 = np.array([startTriArray[i][0] * (1 - alpha) + alpha * endTriArray[i][0],startTriArray[i][1] * (1 - alpha) + alpha * endTriArray[i][1], startTriArray[i][2] * (1 - alpha) + alpha * endTriArray[i][2]])#
+            startAffine = Affine(startTriArray[i],triangle3)
+            startAffine.transform(self.startImage,newImg1)
+            endAffine = Affine(endTriArray[i],triangle3)
+            endAffine.transform(self.endImage,newImg2)
+            i+=1
+
+        outputImage = np.round(((1-alpha)*newImg1 + alpha*newImg2).astype(np.uint8))
+        imageio.imwrite('outputImage.bmp',outputImage)
+def main(startFile,startPointFile, endFile,endPointFile):
+
+    readStartImage = imageio.imread(startFile)
+    readEndImage = imageio.imread(endFile)
+
+    startImageArray = np.array(readStartImage)
+    endImageArray = np.array(readEndImage)
+
+    startPoint = np.loadtxt(startPointFile, dtype = np.float64)
+    endPoint = np.loadtxt(endPointFile, dtype = np.float64)
+
+    blender = BLender(startImageArray,startPoint,endImageArray,endPoint)
+    blender.getBlendedImage(1)
+
+
+
+if __name__ == '__main__':
+    startFile = "WolfGray.jpg"
+    endFile = "Tiger2Gray.jpg"
+    startPointFile = "wolf.jpg.txt"
+    endPointFile = "tiger2.jpg.txt"
+    main(startFile,startPointFile,endFile,endPointFile)

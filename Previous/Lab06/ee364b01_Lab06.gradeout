@@ -1,0 +1,22 @@
+/home/ecegridfs/a/ee364ta/grading/Lab06/ee364b01
+
+It is not 66.111 nor -0.12990, but it is +999.0 and +0.76549.
+Some numbers to check: 0.12345e2, +9.888123E+3, 1.0e-300, 6.0E+120, -6.8989E-34.
+With the electron's charge being -1.6022e-19, some choices you have are -110, -32.0 and +55. Assumethat pi equals 3.1415, 'e' equals 2.7 and Na is +6.0221E+023.
+More numbers 25077481224503895, +702.838, -0.649, +0.6675E-2, -0.55e+30, +1000.4, -679821410935012.9.
+-------------------------------------------------------------------------------
+FUNCTION           | DESCRIPTION         | COMMENTS                 | POINTS  
+-------------------------------------------------------------------------------
+captureNumbers       test combination 1    Passed                     2.5/2.5 
+captureNumbers       test combination 2    FAILED                     0/2.5   
+captureNumbers       test floats           FAILED                     0/2.5   
+captureNumbers       test scientific       FAILED                     0/2.5   
+isSplitUsed                                Passed                     0/0     
+regEx_getSwitches    Group 1               FAILED                     0/2     
+regEx_getSwitches    Group 2               FAILED                     0/2     
+regEx_getSwitches    Group 3               FAILED                     0/2     
+regEx_getSwitches    Group 4               FAILED                     0/2     
+regEx_getSwitches    Group 5               FAILED                     0/2     
+-------------------------------------------------------------------------------
+
+Total Score = 2.5

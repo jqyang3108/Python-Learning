@@ -1,0 +1,83 @@
+
+class TimeSpan:
+    def __init__(self,weeks,days,hours):
+        if(weeks < 0):
+            raise ValueError("Value of weeks is less than 0")
+        elif(days < 0):
+            raise ValueError("Value of days is less than 0")
+        elif(hours < 0):
+            raise ValueError("Value of hours is less than 0")
+        else:
+            self.weeks = weeks
+            self.days = days
+            self.hours = hours
+            if(self.hours >=24):
+                self.days  = self.days + self.hours//24 #divide(self.hours,24)
+                self.hours = self.hours % 24
+                #print(self.days)
+                if(self.days >= 7):
+                    self.weeks = self.weeks + self.days//7 #divide(self.days,7)
+                    self.days = self.days % 7
+            else:
+                if(self.days >= 7):
+                    self.weeks = self.weeks + self.days//7 #divide(self.days,7)
+                    self.days = self.days % 7
+            #print("def __init__  week: {}  day: {}  hour: {}".format(self.weeks, self.days,self.hours))
+        return
+    def __str__(self):
+        if(self.weeks<10):
+            week = "0"+str(self.weeks)
+        else:
+            week = str(self.weeks)
+        if(self.hours<10):
+            hour = "0" + str(self.hours)
+        else:
+            hour = str(self.hours)
+
+        output = "{}W {}D {}H".format(week,self.days,hour)
+        return output
+
+    def getTotalHours(self):
+        total = self.weeks*7*24 +self.days*24+self.hours
+        return total
+
+    def __add__(self,time2):
+        if(type(time2) is not TimeSpan):
+            raise TypeError("Type of argument is incorrect")
+        else:
+            newHours = self.hours+time2.hours
+            newDays = self.days + time2.days
+            newWeeks = self.weeks + time2.hours
+            output = TimeSpan(newWeeks,newDays,newHours)
+
+        return output
+
+    def __mul__(self,int2):
+        if(type(int2) is not int):
+            raise TypeError("Type of argument is incorrect")
+        if(int2 <=0):
+            raise ValueError("Argument must be greater than 0")
+        newHours = self.hours*int2
+        newDays = self.days * int2
+        newWeeks = self.weeks * int2
+        output = TimeSpan(newWeeks,newDays,newHours)
+        return output
+
+    def __rmul__(self, int2):
+        if(type(int2) is not int):
+            raise TypeError("Type of argument is incorrect")
+        if(int2 <=0):
+            raise ValueError("Argument must be greater than 0")
+        newHours = self.hours*int2
+        newDays = self.days * int2
+        newWeeks = self.weeks * int2
+        output = TimeSpan(newWeeks,newDays,newHours)
+        return output
+
+if __name__ == "__main__":
+
+    ts = TimeSpan(weeks=2,days=5,hours=200)
+    ts2 = TimeSpan(weeks=2,days=16,hours=9)
+    #print(ts+ts2)
+    print(ts.getTotalHours())
+    #print(2*ts)

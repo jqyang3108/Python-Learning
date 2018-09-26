@@ -1,0 +1,98 @@
+part_a (a pts)
+------------------------
+Failed
+5 out of 5 wrong
+------------------------
+Total for part_a: 0/5
+
+------------------------
+part_b (5 pts)
+------------------------
+Passed
+------------------------
+Total for part_b: 5/5
+
+------------------------
+part_c (5 pts)
+------------------------
+Failed
+Your output: 
+
+Expected output: 
+Alex Gheith
+Andrew Chen
+Aakash Gupts
+
+------------------------
+Total for part_c: 0/5
+
+------------------------
+part_d (5 pts)
+------------------------
+Error
+------------------------
+Total for part_d: 0/5
+
+------------------------
+part_e (5 pts)
+------------------------
+Error
+------------------------
+Total for part_e: 0/5
+
+------------------------
+part_f (5 pts)
+------------------------
+Failed
+Your output: 
+
+Expected output: 
+Merle,Shaw,9065 Linda Circle,Aliquippa,Aliquippa,PA,15001,454-734-8931,Merle.Shaw@email.com
+Adam,Sanchez,185 North Park St.,Alliance,Alliance,OH,44601,729-792-7600,Adam.Sanchez@email.com
+Bobbie,Stanley,38 Smith Store Street,Andover,Andover,MA,1810,564-410-4675,Bobbie.Stanley@email.com
+Shelly,Bass,9737 Selby Street,Antioch,Antioch,TN,37013,772-675-2902,Shelly.Bass@email.com
+Judy,Richardson,508 Bank Court,Atlantic City,Atlantic City,NJ,8401,627-942-3737,Judy.Richardson@email.com
+Chris,Morris,42 SW. Brickyard Dr.,Basking Ridge,Basking Ridge,NJ,7920,767-253-5940,Chris.Morris@email.com
+Jon,Dixon,58 Court Lane,Boca Raton,Boca Raton,FL,33428,470-942-3572,Jon.Dixon@email.com
+Austin,Daniel,8302 6th Rd.,Brockton,Brockton,MA,2301,518-456-7539,Austin.Daniel@email.com
+Olive,Lewis,857 San Juan St.,Brockton,Brockton,MA,2301,714-195-8245,Olive.Lewis@email.com
+Brandy,Cox,9580 Brewery Street,Brookfield,Brookfield,WI,53045,543-472-4341,Brandy.Cox@email.com
+
+------------------------
+Total for part_f: 0/5
+
+------------------------
+part_g (5 pts)
+------------------------
+Failed
+Your output: 
+5
+12
+
+Expected output: 
+17
+
+------------------------
+Total for part_g: 0/5
+
+------------------------
+part_h (5 pts)
+------------------------
+Failed
+Your output: 
+
+Expected output: 
+5
+
+------------------------
+Total for part_h: 0/5
+
+------------------------
+part_i (10 pts)
+------------------------
+Error
+------------------------
+Total for part_i: 0/10
+
+------------------------
+Final Score: 5/50

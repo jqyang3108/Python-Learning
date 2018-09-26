@@ -1,0 +1,91 @@
+School Olympics (40 pts)
+------------------------
+1)Arguments (7 pts)
+1a) No Arguments - Message (1 pt)
+Failed///////////////////////////
+Your Output:
+Not enough arguments!
+Expected Output:
+Usage: ./collect_stats.bash <file> <sport>
+
+
+1b) No Arguments - Error Code (2 pts)
+Passed.
+
+
+1c) 1 argument given - Message (1 pt)
+Failed
+Your Output:
+Not enough arguments!
+Expected Output:
+Usage: ./collect_stats.bash <file> <sport>
+
+
+
+1d) 1 argument given - Error Code (2 pts)
+Passed.
+1e) File does not exist - Message (1 pt)
+Failed
+Your Output:
+Error: asdf does not exit
+Expected Output:
+Error: asdf does not exist
+2) Output (33 pts)
+2a) Total Athletes (11 pts)
+Passed.
+2a) Total Medals Won (11 pts)
+Failed
+Expected Output:  Gymnastics: Total medals won: 138
+Your Output:      Gymnastics: TOtal medals won: 138
+Expected Output:  Swimming: Total medals won: 93
+Your Output:      Swimming: TOtal medals won: 93
+Expected Output:  Fencing: Total medals won: 121
+Your Output:      Fencing: TOtal medals won: 121
+Expected Output:  Archery: Total medals won: 112
+Your Output:      Archery: TOtal medals won: 112
+Expected Output:  Diving: Total medals won: 105
+Your Output:      Diving: TOtal medals won: 105
+Expected Output:  Judo: Total medals won: 96
+Your Output:      Judo: TOtal medals won: 96
+Expected Output:  Triathlon: Total medals won: 174
+Your Output:      Triathlon: TOtal medals won: 174
+Expected Output:  Wrestling: Total medals won: 190
+Your Output:      Wrestling: TOtal medals won: 190
+Expected Output:  Weightlifting: Total medals won: 87
+Your Output:      Weightlifting: TOtal medals won: 87
+Expected Output:  Surfing: Total medals won: 140
+Your Output:      Surfing: TOtal medals won: 140
+Expected Output:  Badminton: Total medals won: 133
+Your Output:      Badminton: TOtal medals won: 133
+11 wrong lines, granted 0/11 pts
+2a) Best Athlete (11 pts)
+Passed.
+------------------------
+Total for Part 1: 26/40 
+------------------------
+
+Mini Shell (40 pts)
+------------------------
+1) hello (7 pts)
+Failed
+Expected Output:  Hello ee364ta
+Your Output:      Hello ee364ta!
+2) compile (7 pts)
+Failed
+Compilation succeeded for: hello.c
+Compilation succeeded for: repeat.c
+Compilation succeed for: hello.c
+Compilation succeed for: repeat.c
+3) run wrong filename (7 pts)
+Passed.
+4) run arguments (7 pts)
+Passed.
+5) Unrecognized input (7 pts)
+Passed.
+6) goodbye (5 pts)
+Passed.
+------------------------
+Total for Part 2: 26/40 
+------------------------
+
+Final Score: 52/80

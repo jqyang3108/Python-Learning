@@ -1,0 +1,91 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'MorphingGUI.ui'
+#
+# Created: Mon Apr 23 14:58:18 2018
+#      by: pyside-uic 0.2.15 running on PySide 1.2.2
+#
+# WARNING! All changes made in this file will be lost!
+
+from PySide import QtCore, QtGui
+
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(883, 828)
+        self.centralwidget = QtGui.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.graphicsView = QtGui.QGraphicsView(self.centralwidget)
+        self.graphicsView.setGeometry(QtCore.QRect(30, 70, 351, 241))
+        self.graphicsView.setObjectName("graphicsView")
+        self.pushButton = QtGui.QPushButton(self.centralwidget)
+        self.pushButton.setGeometry(QtCore.QRect(30, 30, 151, 27))
+        self.pushButton.setObjectName("pushButton")
+        self.label = QtGui.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(140, 320, 111, 17))
+        self.label.setObjectName("label")
+        self.horizontalSlider = QtGui.QSlider(self.centralwidget)
+        self.horizontalSlider.setGeometry(QtCore.QRect(100, 390, 661, 19))
+        self.horizontalSlider.setMouseTracking(False)
+        self.horizontalSlider.setAcceptDrops(False)
+        self.horizontalSlider.setAutoFillBackground(False)
+        self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.horizontalSlider.setObjectName("horizontalSlider")
+        self.lineEdit = QtGui.QLineEdit(self.centralwidget)
+        self.lineEdit.setGeometry(QtCore.QRect(780, 380, 71, 27))
+        self.lineEdit.setObjectName("lineEdit")
+        self.label_2 = QtGui.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(600, 320, 111, 20))
+        self.label_2.setObjectName("label_2")
+        self.graphicsView_2 = QtGui.QGraphicsView(self.centralwidget)
+        self.graphicsView_2.setGeometry(QtCore.QRect(480, 70, 351, 241))
+        self.graphicsView_2.setObjectName("graphicsView_2")
+        self.pushButton_2 = QtGui.QPushButton(self.centralwidget)
+        self.pushButton_2.setGeometry(QtCore.QRect(480, 30, 141, 27))
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.graphicsView_3 = QtGui.QGraphicsView(self.centralwidget)
+        self.graphicsView_3.setGeometry(QtCore.QRect(260, 460, 351, 241))
+        self.graphicsView_3.setObjectName("graphicsView_3")
+        self.pushButton_3 = QtGui.QPushButton(self.centralwidget)
+        self.pushButton_3.setGeometry(QtCore.QRect(400, 730, 92, 27))
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.label_3 = QtGui.QLabel(self.centralwidget)
+        self.label_3.setGeometry(QtCore.QRect(390, 710, 111, 17))
+        self.label_3.setObjectName("label_3")
+        self.checkBox = QtGui.QCheckBox(self.centralwidget)
+        self.checkBox.setGeometry(QtCore.QRect(380, 330, 131, 22))
+        self.checkBox.setObjectName("checkBox")
+        self.label_4 = QtGui.QLabel(self.centralwidget)
+        self.label_4.setGeometry(QtCore.QRect(20, 390, 61, 17))
+        self.label_4.setObjectName("label_4")
+        self.label_5 = QtGui.QLabel(self.centralwidget)
+        self.label_5.setGeometry(QtCore.QRect(90, 420, 61, 17))
+        self.label_5.setObjectName("label_5")
+        self.label_6 = QtGui.QLabel(self.centralwidget)
+        self.label_6.setGeometry(QtCore.QRect(730, 420, 61, 17))
+        self.label_6.setObjectName("label_6")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtGui.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 883, 25))
+        self.menubar.setObjectName("menubar")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtGui.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "MainWindow", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButton.setText(QtGui.QApplication.translate("MainWindow", "Load Starting Image", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setText(QtGui.QApplication.translate("MainWindow", "Starting Image", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setText(QtGui.QApplication.translate("MainWindow", "Ending Image", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButton_2.setText(QtGui.QApplication.translate("MainWindow", "Load Ending Image", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButton_3.setText(QtGui.QApplication.translate("MainWindow", "Blend", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_3.setText(QtGui.QApplication.translate("MainWindow", "Blending Result", None, QtGui.QApplication.UnicodeUTF8))
+        self.checkBox.setText(QtGui.QApplication.translate("MainWindow", "Show Triangles", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_4.setText(QtGui.QApplication.translate("MainWindow", "Alpha", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_5.setText(QtGui.QApplication.translate("MainWindow", "0.0", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_6.setText(QtGui.QApplication.translate("MainWindow", "0.0", None, QtGui.QApplication.UnicodeUTF8))
+

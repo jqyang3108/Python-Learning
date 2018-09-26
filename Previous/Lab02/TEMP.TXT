@@ -1,0 +1,9 @@
+./src/shift.c:67:4: error: invalid preprocessing directive #void
+./src/shift.c:71: error: expected identifier or ‘(’ before ‘if’
+./src/shift.c:73: error: expected identifier or ‘(’ before ‘for’
+./src/shift.c:73: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+./src/shift.c:73: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘++’ token
+./src/shift.c:75: error: expected identifier or ‘(’ before ‘for’
+./src/shift.c:75: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+./src/shift.c:75: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘++’ token
+./src/shift.c:77: error: expected identifier or ‘(’ before ‘}’ token

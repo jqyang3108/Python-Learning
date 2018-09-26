@@ -1,0 +1,10 @@
+#! /bin/bash
+
+
+y=$@
+echo "Script2 $y"
+
+for ((i=$y; i >= 0; i--))
+do      
+     echo $i
+done
