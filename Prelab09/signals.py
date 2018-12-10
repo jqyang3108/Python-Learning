@@ -43,3 +43,21 @@ def main():
 if __name__ == "__main__":
 
     print(main())
+
+
+    ###
+        name = re.search(r"([a-zA-Z]+)\.([a-zA-Z0-9]+)",filename)
+    extension=name.group(2)
+    if extension == 'jpg' or extension == 'png':
+        identify = subprocess.check_output(['identify',filename],stderr=subprocess.STDOUT)
+        ma = re.search(r"([0-9]+)x([0-9]+)",str(identify))
+        return Image(name.group(0),ma.group(1),ma.group(2))
+    elif extension == 'avi' or extension == 'mp4':
+        identify = subprocess.check_output(['ffprobe','-i',filename],stderr=subprocess.STDOUT)
+        ma = re.search(r" ([0-9]+)x([0-9]+) ",str(identify))
+        du = re.search(r"Duration: ([0-9]+)\:([0-9]+)\:([0-9]+)\.([0-9]+)",str(identify))
+        return Video(name.group(0),int(ma.group(1)),int(ma.group(2)),int(du.group(3)))
+    else:
+        return None
+
+    ###

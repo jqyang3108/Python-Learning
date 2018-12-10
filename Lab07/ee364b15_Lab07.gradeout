@@ -1,0 +1,33 @@
+Question 1 (4 pts) : Failed
+Question 2 (10 pts): Passed
+Question 3 (10 pts): Passed
+Question 4 (10 pts): Passed
+Question 5 and 7 (22 pts each):
+
+<function consumeGeneratorCorrectly at 0x7f70681806a8>
+<function consumeGeneratorCorrectly at 0x7f70681806a8>
+<function consumeGeneratorWrongly at 0x7f7068154378>
+None
+---------------------------------------------------------------------------------------------------------------
+FUNCTION                             | DESCRIPTION                       | COMMENTS                 | POINTS  
+---------------------------------------------------------------------------------------------------------------
+calculate_average_as_float             Return Type                         Passed                     2/2     
+calculate_average_as_float             Return Value of Float Result        Passed                     3/3     
+calculate_average_as_float             Return Value of Integer Result      Passed                     3/3     
+does_fn_consume_input_incrementally    Negative Case                       FAILED                     0/11    
+does_fn_consume_input_incrementally    Positive Case                       Passed                     11/11   
+extract_strings_as_generator           Return Type                         Passed                     3/3     
+extract_strings_as_generator           Return Value                        FAILED                     0/3     
+get_string_lengths_as_list             Return Type                         Passed                     2/2     
+get_string_lengths_as_list             Return Value of N-Element List      Passed                     3/3     
+get_string_lengths_as_list             Return Value of One-Element List    Passed                     3/3     
+---------------------------------------------------------------------------------------------------------------
+
+Question 6 (22 pts):
+    Remove unnecessary comments (0 pts): Failed
+    Rule 4  (10 pts): Passed
+    Rule 15 (5 pts) : Failed
+    Rule 14 (5 pts) : Passed
+    Rule 1  (2 pts) : Passed
+
+Total Score = 77

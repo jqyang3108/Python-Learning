@@ -1,0 +1,131 @@
+#!/usr/local/bin/python3.4
+#-*- Mode: python; tab-width: 4; coding: utf-8 -*- vim:set ft=python fenc=utf8 et ts=4: 
+import sys, re
+
+
+def main():  # DO NOT CHANGE
+    path = sys.argv[1]  # first command line argument
+    average_string_length = calculate_average_string_length_for_file(path)
+    print("{:.03f}".format(average_string_length))
+
+
+def calculate_average_string_length_for_file(path_to_py_code):  # DO NOT CHANGE
+    with open(path_to_py_code, 'r', encoding='utf-8') as infile:
+        python_code = infile.read()
+
+    # Extract the contents of *all* Python strings (not including the surrounding quotes).
+    strings_gen = extract_strings_as_generator(python_code)
+
+    # Create a list of the lengths of each string.
+    string_lengths = get_string_lengths_as_list(strings_gen)
+
+    # Calculate average
+    average_string_length = calculate_average_as_float(string_lengths)
+
+    return average_string_length
+
+
+def calculate_average_as_float(integers):
+    assert isinstance(integers, list), type(integers)  # integers is a list of ints
+    assert len(integers) >= 1                          # integers is not empty
+    # ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓ 
+    #‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    average = 0.0  # TODO:  Change this to calculate the average of integers.
+    sum = 0
+    count = 0
+    for number in integers:
+        sum += number
+        count += 1
+    average = sum / count
+    #____________________________________________________________
+    # ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  
+    assert isinstance(average, float), type(average)     # result
+    return average
+
+
+def get_string_lengths_as_list(strings_iterable):  # strings_iterable may be a generator
+    # ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓ 
+    #‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    string_lengths = [] # TODO:  Change this to create a list of the lengths of each string
+    for strings in strings_iterable:
+        string_lengths.append(len(strings))
+    #____________________________________________________________
+    # ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  
+    assert isinstance(string_lengths, list), type(string_lengths)
+    return string_lengths
+
+
+def extract_strings_as_generator(python_code):  # GENERATOR FUNCTION
+    # ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓ 
+
+    match = re.search(r"\"[a-z]+\"",python_code)
+    print(match)
+    yield match  # TODO: Replace with real code.
+    #____________________________________________________________
+    # ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑
+
+
+
+if __name__ == "__main__":
+    def _test_lightly():
+        # These tests are not comprehensive.  They are here to avoid simple mistakes
+        # and misunderstandings.  Passing these does NOT guarantee a perfect score.
+
+        # 1.  Test calculate_average_as_float(..)
+        assert calculate_average_as_float([2, 4]) == 3.0
+        assert calculate_average_as_float([2, 3]) == 2.5
+
+        # 2.  Test get_string_lengths_as_list(..)
+        assert get_string_lengths_as_list(["12"])         == [2]
+        assert get_string_lengths_as_list(["12", "1234"]) == [2, 4]
+
+        # 3.  Test extract_strings_as_generator(..)
+        from inspect import isgeneratorfunction
+        assert isgeneratorfunction(extract_strings_as_generator)
+        assert tuple(extract_strings_as_generator('a = "yop" + "shi"')) == ("yop", "shi")
+
+        # 4.  Test all together
+        assert calculate_average_string_length_for_file("a.py") ==  3.000
+        assert calculate_average_string_length_for_file("b.py") ==  2.500
+        assert calculate_average_string_length_for_file("c.py") == 13.250
+
+    _test_lightly()
+
+    main()
+
+#____________________________________________________________
+# NAME
+#        average_string_length.py - Print the average length of strings in Python code
+# 
+# SYNOPSIS
+#        average_string_length «FILE»
+# 
+# DESCRIPTION
+#        Print the average of the lengths of all Python string literals in FILE.
+#
+#        Result will be printed as a floating point number.
+#
+#        FILE is a path to a valid Python file.
+#
+# IMPORTANT
+#        ∙ You must use regular expressions to solve this.
+#        ∙ Do not use any string methods, re.strip(), or any modules except re.
+#        ∙ Do not add any additional functions or imports to this file.
+#        ∙ You will get zero on this question if you use string methods or re.strip().
+#
+# INSTRUCTIONS
+#        You need to fill in three functions.  Start with the easiest.  We will grade
+#        the three functions separately.
+#        ∙ Fill in the code for calculate_average_as_float(…).    This is the easiest.
+#        ∙ Fill in the code for get_string_lengths_as_list(…).
+#        ∙ Fill in the code for extract_strings_as_generator(…).
+#
+# DETAILS
+#        ∙ No error handling is expected.  Assume python_code is valid Python 3.4 code.
+#        ∙ Instructor solution:  5 sloc (total)
+#          - 1 line  for calculate_average_as_float(…)
+#          - 1 line  for get_string_lengths_as_list(…)
+#          - 3 lines for extract_strings_as_generator(…)
+#____________________________________________________________
+
+# vim: set fileencoding=utf8 expandtab tabstop=4 shiftwidth=4:

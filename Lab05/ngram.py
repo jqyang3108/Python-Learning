@@ -57,7 +57,10 @@ def get_ith_ngram(words,n,i):
                 index2 += 1
                 count -= 1
             d.append(tuple(c))
-    return d[i]
+    if (d==[]):
+        return tuple()
+    else:
+        return d[i]
 if __name__ == "__main__":
     n = 9
     test_list1 = ['a','b','c','d','a','b','c','d']
@@ -79,7 +82,6 @@ if __name__ == "__main__":
     print(list(get_distinct_ngrams(test_list1,n)))
 
     n=3
-    i=0
     test_list1 = ['a','b','c','b','a','b','c','d']
     print("\n\nproblem3\n",get_distinct_unordered_ngrams(test_list1,n))
     print(list(get_distinct_unordered_ngrams(test_list1,n)))
@@ -87,7 +89,6 @@ if __name__ == "__main__":
 
     n=3
     i=2
-    test_list1 = ['a','b','c','b','a']
+    test_list1 = ['a','b','c','d','a']
 
     print("\n\nproblem4\n",get_ith_ngram(test_list1,n,i))
-    print(list(get_ngrams(test_list1,n)))

@@ -1,0 +1,61 @@
+#!/bin/bash
+#-*- Mode: sh; tab-width: 4; coding: utf-8 -*- vim:set ft=sh fenc=utf8 et ts=4: 
+# ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓ 
+#‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+for arg in $@
+do
+  echo $arg
+  test=$(cat $arg | head -n1 | cut -d "/" -f1)
+  if [[ $test == "#!" ]]
+  then
+    chmod u+x $arg
+  fi
+done
+
+exit 0
+
+
+#____________________________________________________________
+# ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  
+#____________________________________________________________
+# NAME
+#        ensure_executability - Ensure any file with a shebang is executable by owners.
+# 
+# SYNOPSIS
+#        ensure_executability «FILE1» [«FILE2» ...]
+# 
+# DESCRIPTION
+#        For each file (FILE1, FILE2, ...), check if it has a shebang (first line
+#        starts with "#!").  If so, modify file permissions as needed to ensure that
+#        the file's OWNER can EXECUTE it.  Leave all other permissions intact.
+#
+# FINE PRINT
+#        ∙ No error handling is expected.  Assume files exist and are readable.
+#        ∙ Do not modify files that do not have a shebang line.
+#        ∙ Instructor solution is 3 sloc / 107 characters
+# 
+# EXAMPLES
+#        $ cat hello_world.bash
+#        #!/bin/bash
+#        echo "Hello world!"
+#        
+#        $ cat hello_world.py
+#        #!/usr/local/bin/python3.4
+#        print("Hello world!")
+#        
+#        $ cat hello_world.txt
+#        Hello, World!
+#
+#        $ ll -l hello_world.bash hello_world.py hello_world.txt
+#        -rw-rwxrwx 1 aq ecnuser   32 Oct 12 14:00 hello_world.bash*
+#        -rw------- 1 aq ecnuser   49 Oct 12 14:00 hello_world.py
+#        -rw------- 1 aq ecnuser   14 Oct 12 14:00 hello_world.txt
+#
+#        $ ./ensure_executability hello_world.bash hello_world.py hello_world.txt
+#        
+#        $ ll hello_world.bash hello_world.py hello_world.txt
+#        -rwxrwxrwx 1 aq ecnuser   32 Oct 12 14:00 hello_world.bash*
+#        -rwx------ 1 aq ecnuser   49 Oct 12 14:00 hello_world.py*
+#        -rw------- 1 aq ecnuser   14 Oct 12 14:00 hello_world.txt
+#        
+#        $

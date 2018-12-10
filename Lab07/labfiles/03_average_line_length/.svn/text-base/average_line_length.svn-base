@@ -1,0 +1,80 @@
+#!/bin/bash
+#-*- Mode: sh; tab-width: 4; coding: utf-8 -*- vim:set ft=sh fenc=utf8 et ts=4: 
+# ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓ 
+#‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+num_lines_all=0
+num_chars_all=0
+for arg in $@
+do
+  ((num_chars_all=$num_chars_all+$(wc -c $arg | cut -d ' ' -f1)))
+  ((num_lines_all=$num_lines_all+$(wc -l $arg | cut -d ' ' -f1)))
+done
+((output=($num_chars_all - $num_lines_all) / $num_lines_all))
+echo $output
+exit 0
+#____________________________________________________________
+# ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  
+#____________________________________________________________
+# NAME
+#        average_line_length - compute average line length of the input file
+# 
+# SYNOPSIS
+#        average_line_length «FILE1» [«FILE2» ...]
+# 
+# DESCRIPTION
+#        Print the average number of *characters* on each line over all files,
+#        excluding the newline ("\n") at the end of each line.
+#
+# CALCULATION
+#        You can structure your code however you like, but the calculation MUST
+#        be equivalent to the following.
+#        ∙ Calculate the total number of lines in all files (num_lines_all).
+#        ∙ Calculate the total number of characters in all files, excluding
+#          the "\n" at the end of each line (num_chars_all).
+#        ∙ Calculate the average as (num_chars_all - num_lines_all) / num_lines_all.
+#
+#        CAUTION:  DO NOT DIVIDE BY THE # OF FILES.  You should have exactly one
+#                  division operation.
+#
+# FINE PRINT
+#        ∙ No error handling is expected.  You may assume that FILE1 (and FILE2, ...)
+#          exist and are readable, at least of the files is non-empty, and any
+#          non-empty file ends with a newline ("\n").
+#        ∙ A "line" is defined as 0 or more characters followed by a newline ("\n").
+#          Output will be an integer.
+#        ∙ Instructor solution is 3 sloc / 108 characters
+# 
+# EXAMPLES
+#        $ ls -l
+#        -rw------- 1 aq ecnuser 13 Oct 12 13:40 a.txt
+#        -rw------- 1 aq ecnuser  2 Oct 12 13:39 b.txt
+#        -rw------- 1 aq ecnuser 30 Oct 12 13:40 c.txt
+#        
+#        $ cat a.txt
+#        1234
+#        1234567
+#        
+#        $ cat b.txt
+#        1
+#        
+#        $ cat c.txt
+#        123456789
+#        123456789
+#        123456789
+#        
+#        $ ./average_line_length a.txt b.txt c.txt
+#        6
+#        
+#        $ ./average_line_length a.txt b.txt
+#        4
+#        
+#        $ ./average_line_length a.txt
+#        5
+#        
+#        $ ./average_line_length a.txt b.txt
+#        4
+#        
+#        $ ./average_line_length b.txt
+#        1
+#        
+#        $

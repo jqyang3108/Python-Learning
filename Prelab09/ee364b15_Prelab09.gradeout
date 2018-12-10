@@ -1,0 +1,30 @@
+--------------------------------------------------------------------------------
+FUNCTION        | DESCRIPTION             | COMMENTS                 | POINTS  
+--------------------------------------------------------------------------------
+check_network     ConnectionError Test      Passed                     2.5/2.5 
+check_network     No Exception Test         Passed                     2.5/2.5 
+check_network     OSError Exception Test    Passed                     2.5/2.5 
+check_network     Other Exception Test      Passed                     2.5/2.5 
+is_bounded        No data                   Passed                     4/4     
+is_bounded        Range 1                   Passed                     4/4     
+is_bounded        Range 2                   Passed                     4/4     
+is_bounded        Range 3                   Passed                     4/4     
+is_bounded        Range 4                   Passed                     4/4     
+is_ok             342-ACX                   Passed                     2.5/2.5 
+is_ok             ABC-1234                  Passed                     2.5/2.5 
+is_ok             ACVB5432                  Passed                     2.5/2.5 
+is_ok             ASX-202                   Passed                     2.5/2.5 
+load_data_from    Bad Signal 1              Passed                     3/3     
+load_data_from    Bad Signal 2              Passed                     3/3     
+load_data_from    Missing Signal            Passed                     2/2     
+load_data_from    Signal Count 1            Passed                     3/3     
+load_data_from    Signal Count 2            Passed                     3/3     
+load_data_from    Signal Values 1           Passed                     3/3     
+load_data_from    Signal Values 2           Passed                     3/3     
+load_multiple     Whole Dictionary          FAILED                     0/20    
+save_data         Files Count               FAILED                     0/10    
+save_data         Signal 1                  Error running function     0/5     
+save_data         Signal 2                  Error running function     0/5     
+--------------------------------------------------------------------------------
+
+Total Score = 60.0

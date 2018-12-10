@@ -1,0 +1,28 @@
+/home/ecegridfs/a/ee364ta/grading/Prelab05/ee364b15
+
+-----------------------------------------------------------------------------------------------------------------
+FUNCTION                                    | DESCRIPTION                  | COMMENTS                 | POINTS  
+-----------------------------------------------------------------------------------------------------------------
+WordPosition                                  'idx' attribute                Passed                     4/4     
+WordPosition                                  'word' attribute               Passed                     4/4     
+WordPosition                                  WordPosition Type              Passed                     4/4     
+getComponentCountByProject                    Return Type Check              Passed                     10/10   
+getComponentCountByProject                    Valid Generator (Info Only)    Passed                     0/0     
+getComponentCountByProject                    With Generator Input           Passed                     5/5     
+getComponentCountByProject                    With Iterable Input            Passed                     5/5     
+get_first_appearances                         Return Type Check              Passed                     8/8     
+get_first_appearances                         Valid Generator (Info Only)    Passed                     0/0     
+get_first_appearances                         With Generator Input           Passed                     4/4     
+get_first_appearances                         With Iterable Input            Passed                     4/4     
+get_word_to_first_idx                         Return Type                    Passed                     10/10   
+get_word_to_first_idx                         Return Value                   Passed                     10/10   
+get_word_to_frequency                         Return Type                    Passed                     8/8     
+get_word_to_frequency                         Return Value                   Passed                     8/8     
+get_word_to_frequency_ordered_by_first_idx    Return Type                    Passed                     8/8     
+get_word_to_frequency_ordered_by_first_idx    Return Value                   Passed                     8/8     
+-----------------------------------------------------------------------------------------------------------------
+
+Code quality #1: lines 25,34: -1% of possible
+Code quality #14: lines 4,5,10,19,23,31,32: -1% of possible
+
+Total Score = 98.0

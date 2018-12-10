@@ -1,0 +1,28 @@
+#!/bin/bash
+#-*- Mode: sh; tab-width: 4; coding: utf-8 -*- vim:set ft=sh fenc=utf8 et ts=4: 
+#‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓ 
+#‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+file=$1
+
+head  $1 | tail -n 1
+
+#____________________________________________________________
+# ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  
+#____________________________________________________________
+# NAME
+#        last_line - Print the last line of a single file
+# 
+# SYNOPSIS
+#        last_line «FILE1»
+# 
+# DESCRIPTION
+#        Print the last line of a single file.
+#
+# DETAILS
+#        ∙ DO NOT USE ANY STREAM REDIRECTION (e.g., |  >  <  etc.).
+#        ∙ This is equivalent to the following, except without the pipe:
+#             cat $1 | tail -n 1
+#        ∙ No error handling is expected.  Assume FILE exists and is readable.
+#        ∙ Don't overthink this.  It is intended as the easiest question on Exam 1.
+#____________________________________________________________

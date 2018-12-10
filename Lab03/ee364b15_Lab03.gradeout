@@ -1,0 +1,12 @@
+/home/ecegridfs/a/ee364ta/grading/Lab03/ee364b15
+
+---------------------------------------------------------------------------------
+FUNCTION            | DESCRIPTION          | COMMENTS                 | POINTS  
+---------------------------------------------------------------------------------
+filter_by_letter      Multiple Match Test    Passed                     20/20   
+filter_by_letter      No Match Test          Passed                     15/15   
+filter_by_letter      Single Match Test      Passed                     15/15   
+get_cumulative_sum    Complete List          Passed                     50/50   
+---------------------------------------------------------------------------------
+
+Total Score = 100.0

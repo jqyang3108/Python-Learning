@@ -1,0 +1,32 @@
+/home/ecegridfs/a/ee364ta/grading/Prelab04/ee364b15
+
+----------------------------------------------------------------------------------------------
+FUNCTION                        | DESCRIPTION           | COMMENTS                 | POINTS  
+----------------------------------------------------------------------------------------------
+get_circuit_by_student                                    Passed                     5/5     
+get_circuit_by_student_partial    Both Name               Passed                     4/4     
+get_circuit_by_student_partial    First Name              Passed                     3/3     
+get_circuit_by_student_partial    Last Name               Passed                     3/3     
+get_common_by_project             Test 1                  Passed                     3/3     
+get_common_by_project             Test 2                  Passed                     2/2     
+get_common_by_student             Test 1                  Passed                     3/3     
+get_common_by_student             Test 2                  Passed                     2/2     
+get_component_by_student          Student Set 1 Test      Passed                     5/5     
+get_component_by_student          Student Set 2 Test      Passed                     5/5     
+get_component_count_by_project    Missing Project Test    Passed                     2/2     
+get_component_count_by_project    Project 1 Test          Passed                     4/4     
+get_component_count_by_project    Project 2 Test          Passed                     4/4     
+get_component_count_by_student    Student 1 Test          Passed                     5/5     
+get_component_count_by_student    Student 2 Test          Passed                     5/5     
+get_participation_by_project      Project 1 Test          Passed                     5/5     
+get_participation_by_project      Project 2 Test          Passed                     5/5     
+get_participation_by_student      Student 1 Test          Passed                     5/5     
+get_participation_by_student      Student 2 Test          Passed                     5/5     
+get_project_by_circuit                                    Passed                     5/5     
+get_project_by_component          Component Set 1 Test    Passed                     5/5     
+get_project_by_component          Component Set 2 Test    Passed                     5/5     
+get_student_by_component          Component Set 1 Test    Passed                     5/5     
+get_student_by_component          Component Set 2 Test    Passed                     5/5     
+----------------------------------------------------------------------------------------------
+
+Total Score = 100.0

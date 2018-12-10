@@ -1,0 +1,27 @@
+/home/ecegridfs/a/ee364ta/grading/Lab05/ee364b15
+
+------------------------------------------------------------------------------------------------------
+FUNCTION                       | DESCRIPTION                    | COMMENTS                 | POINTS  
+------------------------------------------------------------------------------------------------------
+get_distinct_ngrams              Case: n = 2                      Passed                     10/10   
+get_distinct_ngrams              Case: n = 4                      Passed                     10/10   
+get_distinct_ngrams              Case: n = 6                      Passed                     5/5     
+get_distinct_ngrams              Valid Generator (Must Pass)      Passed                     0/0     
+get_distinct_unordered_ngrams    Case: n = 2                      Passed                     10/10   
+get_distinct_unordered_ngrams    Case: n = 4                      Passed                     10/10   
+get_distinct_unordered_ngrams    Case: n = 6                      Passed                     5/5     
+get_distinct_unordered_ngrams    Valid Generator (Must Pass)      Passed                     0/0     
+get_ith_ngram                    Case: n = 2, i = 4               FAILED                     0/10    
+get_ith_ngram                    Case: n = 4, i = 0               FAILED                     0/5     
+get_ith_ngram                    Case: n = 4, i = 4               FAILED                     0/5     
+get_ith_ngram                    Case: n = 6, i = 0               FAILED                     0/5     
+get_ith_ngram                    Valid Enumeration (Must Pass)    FAILED                     0/0     
+get_ngrams                       Case: n = 2                      Passed                     10/10   
+get_ngrams                       Case: n = 4                      Passed                     10/10   
+get_ngrams                       Case: n = 6                      Passed                     5/5     
+get_ngrams                       Valid Generator (Must Pass)      Passed                     0/0     
+------------------------------------------------------------------------------------------------------
+
+Code quality #14: lines 1,2,8,14,15,16,22,30,31,32,38,46,47,48,54: -1% of possible
+
+Total Score = 74.0

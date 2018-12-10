@@ -1,0 +1,20 @@
+/home/ecegridfs/a/ee364ta/grading/Lab08/ee364b15
+
+---------------------------------------------------------------------------
+FUNCTION           | DESCRIPTION     | COMMENTS                 | POINTS  
+---------------------------------------------------------------------------
+create_media_file    Image Creation    Passed                     10/10   
+create_media_file    Video Creation    Passed                     10/10   
+image_class          extension         Passed                     10/10   
+image_class          filename          Passed                     10/10   
+image_class          height            Passed                     10/10   
+image_class          width             Passed                     10/10   
+video_class          Inheritance       Passed                     15/15   
+video_class          duration_secs     Passed                     5/5     
+video_class          extension         Passed                     5/5     
+video_class          filename          Passed                     5/5     
+video_class          height            Passed                     5/5     
+video_class          width             Passed                     5/5     
+---------------------------------------------------------------------------
+
+Total Score = 100.0

@@ -1,0 +1,18 @@
+/home/ecegridfs/a/ee364ta/grading/Lab09/ee364b15
+
+-------------------------------------------------------------------------------------
+FUNCTION         | DESCRIPTION                 | COMMENTS                 | POINTS  
+-------------------------------------------------------------------------------------
+get_media_files    Function exists               Passed                     10/10   
+main               Assertion, Import & Syntax    FAILED                     0/10    
+main               Keyboard & EOF                FAILED                     0/10    
+main               MediaFileNotFound             FAILED                     0/10    
+new_exception      Attribute filename            Error running function     0/10    
+new_exception      Attribute media_type          Error running function     0/10    
+new_exception      Exception Inheritance         Error running function     0/10    
+new_exception      Exception Present             Error running function     0/10    
+play_methods       Image play                    FAILED                     0/10    
+play_methods       Video play                    FAILED                     0/10    
+-------------------------------------------------------------------------------------
+
+Total Score = 10.0

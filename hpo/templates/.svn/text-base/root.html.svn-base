@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Home Page Optometrist</title>
+</head>
+<body>
+  <h1>Let's wear glasses!</h1>
+  <p>-------------------------------------------------------------------------------------------</p>
+  <h2>Fill in the blank below with valid url of the professor's webpage. Starts with http:// or https://.</h2>
+  <p>For exapmle: http://alexquinn.org/ </p>
+<form method="GET" action="{{url_for('view_page')}}">
+  <input type='text' name='url' size='40' value=''>
+  <input type='submit' value='submit'>
+</form>
+</body>
+</html>

@@ -1,0 +1,72 @@
+#!/bin/bash
+#-*- Mode: sh; tab-width: 4; coding: utf-8 -*- vim:set ft=sh fenc=utf8 et ts=4: 
+# ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓ 
+#‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+para_num=$#
+count=1
+touch $1
+for arg in $@
+do
+  if (( $count == 1))
+    then
+      ((count=$count+1))
+      continue
+    fi
+  cat $arg>>$1
+  ((count=$count+1))
+done
+
+
+#____________________________________________________________
+# ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  ↑  
+#____________________________________________________________
+# NAME
+#        combine_files - append contents of several files to one.
+# 
+# SYNOPSIS
+#        combine_files «DEST» «SRC1» [«SRC2», ...]
+# 
+# DESCRIPTION
+#        Append SRC1 (and SRC2, SRC3, ...) to the end of DEST.
+#        ∙ DEST is a path to a file that may or may not exist
+#        ∙ SRC1 (and SRC2, SRC3, ...) are paths that already exist.
+#
+#        Instructor solution is 3 sloc / 32 bytes
+#
+# FINE PRINT
+#        No error handling is expected.  You may assume SRC1 (and SRC1...)
+#        exist and that DEST is a writable file or can be created.  Do not
+#        add or remove any newline characters.  (In other words, you should
+#        not need to do anything special to deal with newlines.)
+# 
+# EXAMPLES
+# 
+#        $ vim a.txt
+# 
+#        $ echo apple     > a.txt
+# 
+#        $ echo banana    > b.txt
+# 
+#        $ echo cherry    > c.txt
+# 
+#        $ echo dandelion > d.txt
+# 
+#        $ echo eskimo    > e.txt
+# 
+#        $ ./combine_files ab.txt a.txt b.txt
+# 
+#        $ cat ab.txt
+#        apple
+#        banana
+# 
+#        $ ./combine_files abcde.txt a.txt b.txt c.txt d.txt e.txt
+# 
+#        $ cat abcde.txt
+#        apple
+#        banana
+#        cherry
+#        dandelion
+#        eskimo
+# 
+#        $
+#────────────────────────────────────────────────────────────────────── 

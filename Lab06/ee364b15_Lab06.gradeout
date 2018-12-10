@@ -1,0 +1,20 @@
+/home/ecegridfs/a/ee364ta/grading/Lab06/ee364b15
+
+----------------------------------------------------------------------------
+FUNCTION        | DESCRIPTION         | COMMENTS                 | POINTS  
+----------------------------------------------------------------------------
+extract_values    test combination 1    Passed                     10/10   
+extract_values    test combination 2    Passed                     10/10   
+extract_values    test floats           Passed                     10/10   
+extract_values    test scientific       FAILED                     0/20    
+get_switches      Group 1               Passed                     10/10   
+get_switches      Group 2               Passed                     10/10   
+get_switches      Group 3               FAILED                     0/10    
+get_switches      Group 4               Passed                     10/10   
+get_switches      Group 5               Passed                     10/10   
+is_split_used                           Passed                     0/0     
+----------------------------------------------------------------------------
+
+Code quality #14: lines 20: -1% of possible
+
+Total Score = 69.0
